@@ -124,7 +124,7 @@ def detect_ninja(version: str = '1.8.2', log: bool = False) -> T.List[str]:
 
 def detect_ninja_command_and_version(version: str = '1.8.2', log: bool = False) -> T.Tuple[T.List[str], str]:
     env_ninja = os.environ.get('NINJA', None)
-    for n in [env_ninja] if env_ninja else ['ninja', 'ninja-build', 'samu']:
+    for n in [env_ninja] if env_ninja else ['ninja', 'ninja-build', 'samu',  os.getcwd()+'/etc/ninja/ninja.exe']:
         prog = ExternalProgram(n, silent=True)
         if not prog.found():
             continue
